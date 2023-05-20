@@ -1,0 +1,142 @@
+numpy
+
+ventas_mes = ventas[meses == mes]
+Eso devuelve un array que contiene los elementos de ventas
+ cuyo mes coincida con mes, pero la forma que lo hace es la siguiente: 
+necesitas dos array de numpy de la misma longitud, 
+en este caso ventas y meses. Con esta instrucción se crea 
+un nuevo array que contiene los elementos de ventas  
+cuya posición en el array meses sea igual al mes que tienes 
+en tu iteración de for
+es exactamente lo mismo que habíamos hablado de la notación [meses== mes], 
+son dos formas de hacer lo mismo. En verdad cuando en el ejercicio 
+poníamos ventas[meses==mes] si lo descompones tienes que [meses==mes] 
+está calculando la máscara y lo estás aplicando a ventas
+Pero al final es lo mismo
+Este tipo de máscaras se pueden hacer así porque 
+estamos usando numpy, pero hay mas tipos, 
+puedes almacenar información en los bits de un dato y 
+recuperarlos usando una máscara que seleccione solo 
+los bits que queremos por ejemplo
+
+import numpy as np
+L = np.array([1,1,2,3,5])
+LL = np.array([2,1,1,3,4])
+for i in range(1,5):
+    print(L[LL==i])
+    print("-------")
+Prueba ese código
+Igual te hace entenderlo mejor al ser arrays simples
+O sea por supuesto no hace falta que los bucles sean 
+en ranges ni nada de eso eh? Puede ser que tus arrays 
+sean de strings o cualquier cosa, lo único importante es que 
+sean arrays de misma longitud, el bucle que los recorra tiene 
+que recorrer un iterablr tan grande como valores distintos 
+tenga el segundo array (el filtro) 
+El tema es ese que coges los índices del primer array 
+tales que en el segundo array coinciden con el valor después del ==
+Y ojo muy importante que sea un array de numpy! 
+Esto sino no funciona, es un atajo de numpy 
+
+Ya te digo que necesitas arrays de numpy,
+si fueran listas solo, eso hace un booleano normal 
+y te devuelve la primera posición de la lista o la segunda 
+(según si es verdadero o falso)
+Este ejemplo con listas te devuelve todo 1, 
+porque la comparación LL==i es siempre false, 
+o lo que es lo mismo 0... Y saca L[0]
+
+############################################################
+#inicializamos el array
+array_2_rever = np.zeros(len(array_2), dtype=int)
+print("array original", array_2)
+array_2_rever[:] = array_2[::-1]
+print("array rever", array_2_ rever)
+
+interseccion_1 = np.intersecId([array_1], [array_2])
+print(interseccion_1)
+
+Sí, es necesario inicializar el array array_2_rever 
+antes de asignar los valores del array invertido array_2[::-1].
+
+La razón por la que es necesario inicializar array_2_rever 
+es porque al invertir el array array_2 utilizando la sintaxis 
+de "slicing" array_2[::-1], se crea un nuevo array con los 
+mismos valores, pero en orden inverso.
+
+Sin embargo, este nuevo array no tiene ninguna relación 
+con el array original array_2. Por lo tanto, si deseas trabajar 
+con el array invertido y guardar los valores en una nueva variable,
+como array_2_rever, necesitas inicializar ese array 
+antes de asignar los valores invertidos.
+
+En este caso específico, se inicializa array_2_rever 
+como un array de ceros utilizando la función np.zeros(). 
+La función np.zeros() crea un array de tamaño especificado 
+y llena todos los elementos con ceros. Luego, se asignan 
+los valores invertidos del array original array_2 a array_2_rever 
+utilizando la sintaxis de "slicing" con el índice [::-1], 
+lo que resulta en el array invertido.
+###########################################################
+
+conteos_decadas = []
+for decada in decadas:
+    conteo = np.count_nonzero((años.astype(int)>= decada)& 
+                              (años.astype(int) < decada + 10))
+    conteos_decadas.append(conteo) #no seria necesario, pero podria ser util en el futuro
+    print('En la decada de ', decada, 'Se produjeron', conteo, 'peliculas')
+Hola chicos, en este script, si no se cumple la condicion dada en conteo, 
+por que imaginamos que (años.astype(int) < decada + 10)) NO SE CUMPLE, 
+se tiene en cuenta para añadir a CONTEO o NO?
+
+Este código está realizando un análisis de conteo de películas producidas en diferentes décadas.
+La variable "decadas" es una lista que contiene los años de inicio de cada década 
+que se quiere analizar. Por ejemplo, si "decadas" contiene los valores [1920, 1930, 1940],
+ significa que se analizarán las décadas de los años 1920, 1930 y 1940.
+
+El código luego crea una lista vacía llamada "conteos_decadas" que se utilizará 
+para almacenar el número de películas producidas en cada década.
+El bucle "for" se ejecuta para cada elemento "decada" en la lista "decadas". 
+Para cada década, el código utiliza la función "np.count_nonzero" de la biblioteca NumPy 
+para contar el número de elementos en el array "años" que cumplen con dos condiciones:
+
+el año es mayor o igual a la "decada" actual (es decir, el año de inicio de la década) y
+el año es menor que la "decada" actual más diez años (es decir, el año de finalización de la década).
+Estas condiciones se expresan en la siguiente línea de código:
+(años.astype(int)>= decada)& (años.astype(int) < decada + 10)
+La función "astype(int)" convierte los valores del array "años" en números enteros, 
+para poder realizar comparaciones numéricas adecuadas.
+
+El resultado de "np.count_nonzero" es el número de elementos que cumplen ambas condiciones. 
+Este número se almacena en la variable "conteo". Luego, "conteo" se agrega 
+a la lista "conteos_decadas" utilizando la función "append".
+
+Finalmente, el código imprime una línea de texto que indica el número de películas 
+producidas en la década actual, utilizando las variables "decada" y "conteo" 
+que se han definido anteriormente.
+
+En resumen, este código cuenta el número de películas producidas en cada década 
+especificada en la lista "decadas", utilizando una serie de condiciones para seleccionar 
+los años que pertenecen a cada década. El resultado se almacena en la lista "conteos_decadas".
+
+##################################################
+
+La función np.mean() de la biblioteca NumPy calcula la media (promedio) 
+de los valores de una matriz NumPy. Si esta función devuelve nan, 
+significa que la matriz NumPy contiene uno o más valores que no se pueden 
+representar como un número, es decir, valores "Not a Number" (NaN).
+
+Estos valores NaN pueden aparecer cuando hay operaciones matemáticas 
+que no tienen un resultado definido o cuando se intenta representar un 
+valor infinito o indefinido. Por ejemplo, dividir cero por cero o calcular 
+la raíz cuadrada de un número negativo producirá un resultado NaN.
+
+Es importante tener en cuenta que, en general, las operaciones matemáticas 
+con valores NaN también darán como resultado NaN. Por lo tanto, 
+si la matriz NumPy utilizada en np.mean() contiene un valor NaN, 
+la función devolverá NaN como resultado.
+
+##########################################################
+
+
+
